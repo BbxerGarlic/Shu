@@ -122,7 +122,7 @@ public class Pen : MonoBehaviour
     }
     public float GetInkRate()
     {
-        return inkValue/maxInk;
+        return Mathf.Max(0.00001f,inkValue/maxInk);
     }
     public float GetMaxInk()
     {

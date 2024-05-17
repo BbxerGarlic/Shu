@@ -93,7 +93,7 @@ MonoBehaviour:
   lineMover: {fileID: 2663330467709270132}
   circle: {fileID: 8982027104123961608, guid: 1ae2a496776c3134dadb734f5eee825f, type: 3}
   minScale: 0.01
-  maxScale: 1
+  maxScale: 0.5
 --- !u!58 &8543100566459595918
 CircleCollider2D:
   m_ObjectHideFlags: 0
