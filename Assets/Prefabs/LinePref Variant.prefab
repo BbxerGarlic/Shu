@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Parameters.textureScale.x
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 5965515091887206706, guid: 466066eaed68ba4438295125a6ac0d81, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.5473671
+      objectReference: {fileID: 0}
     - target: {fileID: 7588393062540873080, guid: 466066eaed68ba4438295125a6ac0d81, type: 3}
       propertyPath: m_Name
       value: LinePref Variant
