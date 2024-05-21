@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System;
-using UnityEngine;
-
 public class PointDrawer : MonoBehaviour, IDrawer
 {
     public Pen lineMover; // 引用LineMover
