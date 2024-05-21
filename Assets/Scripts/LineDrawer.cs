@@ -23,7 +23,16 @@ public class LineDrawer : MonoBehaviour,IDrawer
 
     private void Start()
     {
-        if (!StaticData.isFeiBai)
+        
+        lineMover = GetComponent<Pen>();
+
+        if (Settings.isMiaoHong)
+        {
+            Settings.isFeiBai = lineMover.isFeiBai;
+        }
+
+        
+        if (!Settings.isFeiBai)
         {
             enabled = false;
         }
@@ -60,11 +69,13 @@ public class LineDrawer : MonoBehaviour,IDrawer
         }
     }
 
-    public void StartDrawing(Vector3 startPosition)
+    public GameObject StartDrawing(Vector3 startPosition)
     {
         transform.position = startPosition;
         lineContainer = new GameObject("Line Container");
+        Debug.Log(123);
         SpawnNewLine();
+        return lineContainer;
     }
 
     public void EndDrawing()

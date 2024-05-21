@@ -3,35 +3,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Button feiBaiButton;
-    public Button normalButton;
+    [FormerlySerializedAs("feiBaiButton")] public Button miaoHongButton;
+    [FormerlySerializedAs("normalButton")] public Button createButton;
+    [FormerlySerializedAs("guideButton")] public Button guideButton;
 
     private void Start()
     {
         // 设置按钮的点击事件
-        feiBaiButton.onClick.AddListener(FeiBaiButtonClicked);
-        normalButton.onClick.AddListener(NormalButtonClicked);
+        miaoHongButton.onClick.AddListener(OnMiaoHongButtonClicked);
+        createButton.onClick.AddListener(OnCreateButtonClicked);
+        guideButton.onClick.AddListener(OnGuideButtonClicked);
+        
     }
 
-    private void FeiBaiButtonClicked()
+    public void OnMiaoHongButtonClicked()
     {
-        StaticData.isFeiBai = true;
-        SceneManager.LoadScene("Level1");
+        Settings.isMiaoHong = true;
+        SceneManager.LoadScene("MiaoHongLevel1");
     }
 
-    private void NormalButtonClicked()
+    public void OnCreateButtonClicked()
     {
-        StaticData.isFeiBai = false;
-        SceneManager.LoadScene("Level1");
+        Settings.isMiaoHong = false;
+        SceneManager.LoadScene("CreateLevel1");
     }
+    public void OnGuideButtonClicked()
+    {
+        Settings.isMiaoHong = false;
+        SceneManager.LoadScene("MiaoHongLevel1");
+    }
+
+
+    
 }
 
 
-public static class StaticData
+public static class Settings
 {
     public static bool isFeiBai;
+
+    public static bool isMiaoHong= true;
+    
+    public static bool isDuanBi;
+
+    public static float width;
+}
+
+public class ListExpander
+{
+    public static void EnsureListSize<T>(List<T> list, int targetSize, T defaultValue = default(T))
+    {
+        if (list == null)
+        {
+            list = new List<T>(targetSize);
+        }
+
+        while (list.Count <= targetSize)
+        {
+            list.Add(defaultValue);
+        }
+    }
 }

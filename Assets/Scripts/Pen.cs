@@ -11,6 +11,8 @@ public class Pen : MonoBehaviour
     public float inkRechargeRate = 1.0f;
     public float inkUsagePerMeter = 1.0f;
 
+    public bool isFeiBai;
+    
     private Vector3 targetPosition;
     private bool started = false;
     private bool ended = false;
@@ -19,6 +21,8 @@ public class Pen : MonoBehaviour
 
     private Vector3 lastPos;
     public Vector3 velocity;
+
+    private GameObject line;
 
     private void Start()
     {
@@ -41,7 +45,7 @@ public class Pen : MonoBehaviour
                 {
                     started = true;
                     transform.position = targetPosition;
-                    drawer.StartDrawing(targetPosition);
+                    line=drawer.StartDrawing(targetPosition);
                     lastPos = transform.position;
                 }
                 
@@ -79,6 +83,7 @@ public class Pen : MonoBehaviour
                 {
                     if (TargetManager.Instance.EndGame())
                     {
+                        Invoke(nameof(ContinueGame), 1.0f);
                         return;
                     }
                     
@@ -93,9 +98,24 @@ public class Pen : MonoBehaviour
 
     }
 
+    void ContinueGame()
+    {
+        
+        started = false;
+        ended = false;
+
+    }
+    
     void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+        TargetManager.Instance.ResetGame();
+
+        if(!Settings.isDuanBi&&!Settings.isMiaoHong) Destroy(line);
+        
+        started = false;
+        ended = false;
+
     }
 
     void MoveToPoint(Vector3 target)
@@ -129,5 +149,19 @@ public class Pen : MonoBehaviour
         return maxInk;
     }
 
-
+    public void SwitchPen()
+    {
+        if (Settings.isFeiBai)
+        {
+            Settings.isFeiBai = false;
+            GetComponent<LineDrawer>().enabled = false;
+            GetComponent<PointDrawer>().enabled = true;
+        }
+        else
+        {
+            Settings.isFeiBai = true;
+            GetComponent<LineDrawer>().enabled = true;
+            GetComponent<PointDrawer>().enabled = false;
+        }
+    }
 }

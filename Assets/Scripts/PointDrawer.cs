@@ -6,13 +6,23 @@ public class PointDrawer : MonoBehaviour, IDrawer
 {
     public Pen lineMover; // 引用LineMover
     public GameObject circle;
+    public GameObject lineContainer;
     private Vector3 lastPosition;
     public float minScale=0.01f;
     public float maxScale=0.5f;
     private bool started;
+    
     private void Start()
     {
-        if (StaticData.isFeiBai)
+        lineMover = GetComponent<Pen>();
+        
+        
+        if (Settings.isMiaoHong)
+        {
+            Settings.isFeiBai = lineMover.isFeiBai;
+        }
+        
+        if (Settings.isFeiBai)
         {
             enabled = false;
         }
@@ -25,10 +35,13 @@ public class PointDrawer : MonoBehaviour, IDrawer
 
     }
 
-    public void StartDrawing(Vector3 startPosition)
+    public GameObject StartDrawing(Vector3 startPosition)
     {
         started = true;
         lastPosition = lineMover.transform.position;
+        
+        lineContainer = new GameObject("Line Container");
+        return lineContainer;
     }
 
     public void EndDrawing()
@@ -50,7 +63,7 @@ public class PointDrawer : MonoBehaviour, IDrawer
 
         if (steps == 0)
         {
-            var obj = Instantiate(circle, currentPosition, Quaternion.identity);
+            var obj = Instantiate(circle, currentPosition, Quaternion.identity, lineContainer.transform);
             obj.transform.localScale = Vector3.one * Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale);
         }
         else
@@ -58,7 +71,7 @@ public class PointDrawer : MonoBehaviour, IDrawer
             for (int i = 0; i <= steps; i++)
             {
                 Vector3 position = Vector3.Lerp(lastPosition, currentPosition, i / (float)steps);
-                var obj = Instantiate(circle, position, Quaternion.identity);
+                var obj = Instantiate(circle, position, Quaternion.identity,lineContainer.transform);
                 obj.transform.localScale = Vector3.one * Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale);
             }
         }
@@ -82,7 +95,7 @@ public class PointDrawer : MonoBehaviour, IDrawer
 
 public interface IDrawer
 {
-    public void StartDrawing(Vector3 startPosition);
+    public GameObject StartDrawing(Vector3 startPosition);
     public void EndDrawing();
 
     public void UpdateDrawing(Vector3 position);

@@ -8,16 +8,16 @@ using UnityEngine.Serialization;
 public class Target : AreaBase
 {
 
-    public Vector2 velocityDir;
+    public Vector2 VelocityDir=>transform.up;
     public float angle;
-    [FormerlySerializedAs("inkMaxMinValue")] [FormerlySerializedAs("velocityMaxMinValue")] [Tooltip("速度区间，x为速度最大值，y为速度最小值")]public Vector2 inkMinMaxValue;
+    [FormerlySerializedAs("inkMaxMinValue")] [FormerlySerializedAs("velocityMaxMinValue")] [Tooltip("墨水区间，x为墨水最大值，y为墨水最小值")]public Vector2 inkMinMaxValue;
 
     private Pen pen;
 
-    private void Start()
-    {
-        TargetManager.Instance.AddTarget(this);
 
+    protected override void Start()
+    {
+        base.Start();
         pen = GameObject.FindWithTag("Pen").GetComponent<Pen>();
 
 
@@ -39,7 +39,14 @@ public class Target : AreaBase
 
     }
     
-    
+    public override void OnReset()
+    {
+        //TODO: 这里可以实现重置效果
+        GetComponent<SpriteRenderer>().DOColor(Color.red, 0.5f);
+        transform.DOScale(Vector3.one * 0.2f, 0.5f);
+        
+        GetComponent<CircleCollider2D>().enabled = true;
+    }
 
     protected override void OnPenEnter()
     {
@@ -53,10 +60,10 @@ public class Target : AreaBase
         // 检查速度是否在指定范围内
         if (inkValue >= inkMinMaxValue.x && inkValue <= inkMinMaxValue.y)
         {
-            Debug.Log(123);
+//            Debug.Log(123);
             // 归一化向量
             Vector2 normalizedPenVelocity = penVelocity.normalized;
-            Vector2 normalizedVelocityDir = velocityDir.normalized;
+            Vector2 normalizedVelocityDir = VelocityDir.normalized;
 
             // 计算点积
             float dotProduct = Vector2.Dot(normalizedPenVelocity, normalizedVelocityDir);
@@ -78,5 +85,6 @@ public class Target : AreaBase
     {
         
     }
+
 
 }

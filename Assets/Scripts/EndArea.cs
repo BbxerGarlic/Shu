@@ -17,4 +17,13 @@ public class EndArea : AreaBase
     {
         GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f);
     }
+
+    public override void OnReset()
+    {
+
+        GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f);
+        
+        GetComponent<CircleCollider2D>().enabled = true;
+
+    }
 }

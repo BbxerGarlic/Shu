@@ -19,4 +19,23 @@ public class StartArea : AreaBase
         GetComponent<SpriteRenderer>().DOColor(Color.clear, 0.5f);
         GetComponent<CircleCollider2D>().enabled = false;
     }
+    
+    public override void OnReset()
+    {
+        Color color;
+        if (ColorUtility.TryParseHtmlString("#FFC107", out color))
+        {
+            
+        }
+        else
+        {
+            Debug.LogWarning("Invalid hex color string");
+            color=Color.black; // 返回一个默认颜色
+        }
+        GetComponent<SpriteRenderer>().DOColor(color, 0.5f);
+        
+        GetComponent<CircleCollider2D>().enabled = true;
+
+    }
+    
 }
