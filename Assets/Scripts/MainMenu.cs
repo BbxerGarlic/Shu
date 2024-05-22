@@ -30,12 +30,12 @@ public class MainMenu : MonoBehaviour
     public void OnCreateButtonClicked()
     {
         Settings.isMiaoHong = false;
-        SceneManager.LoadScene("CreateLevel1");
+        SceneManager.LoadScene("CreateMenu");
     }
     public void OnGuideButtonClicked()
     {
         Settings.isMiaoHong = false;
-        SceneManager.LoadScene("MiaoHongLevel1");
+        SceneManager.LoadScene("GuideLevel1");
     }
 
 
@@ -45,13 +45,13 @@ public class MainMenu : MonoBehaviour
 
 public static class Settings
 {
-    public static bool isFeiBai;
+    public static bool isFeiBai=true;
 
-    public static bool isMiaoHong= true;
+    public static bool isMiaoHong;
     
-    public static bool isDuanBi;
+    public static bool isDuanBi=true;
 
-    public static float width;
+    public static float width=1f;
 }
 
 public class ListExpander

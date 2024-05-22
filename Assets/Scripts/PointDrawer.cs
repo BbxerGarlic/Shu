@@ -17,11 +17,6 @@ public class PointDrawer : MonoBehaviour, IDrawer
         lineMover = GetComponent<Pen>();
         
         
-        if (Settings.isMiaoHong)
-        {
-            Settings.isFeiBai = lineMover.isFeiBai;
-        }
-        
         if (Settings.isFeiBai)
         {
             enabled = false;
@@ -64,7 +59,7 @@ public class PointDrawer : MonoBehaviour, IDrawer
         if (steps == 0)
         {
             var obj = Instantiate(circle, currentPosition, Quaternion.identity, lineContainer.transform);
-            obj.transform.localScale = Vector3.one * Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale);
+            obj.transform.localScale = Vector3.one * (Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale) * Settings.width);
         }
         else
         {
@@ -72,7 +67,7 @@ public class PointDrawer : MonoBehaviour, IDrawer
             {
                 Vector3 position = Vector3.Lerp(lastPosition, currentPosition, i / (float)steps);
                 var obj = Instantiate(circle, position, Quaternion.identity,lineContainer.transform);
-                obj.transform.localScale = Vector3.one * Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale);
+                obj.transform.localScale = Vector3.one * (Mathf.Clamp(Mathf.Pow(lineMover.GetInkRate(),0.5f)*maxScale-0.05f, minScale, maxScale) * Settings.width);
             }
         }
 

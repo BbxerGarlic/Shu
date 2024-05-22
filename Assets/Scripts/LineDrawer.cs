@@ -25,11 +25,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     {
         
         lineMover = GetComponent<Pen>();
-
-        if (Settings.isMiaoHong)
-        {
-            Settings.isFeiBai = lineMover.isFeiBai;
-        }
+        
 
         
         if (!Settings.isFeiBai)
@@ -71,7 +67,11 @@ public class LineDrawer : MonoBehaviour,IDrawer
 
     public GameObject StartDrawing(Vector3 startPosition)
     {
-        transform.position = startPosition;
+        lineRenderer = null;
+        currentLine = null;
+        
+        //transform.position = startPosition;
+        
         lineContainer = new GameObject("Line Container");
         Debug.Log(123);
         SpawnNewLine();
@@ -96,7 +96,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
             }
         }
 
-        transform.position = position;
+        //transform.position = position;
     }
 
     public float GetEndCapThreshold()
@@ -128,19 +128,27 @@ public class LineDrawer : MonoBehaviour,IDrawer
         UpdateMaterialProperties(line.material, line);
         line.positionCount++;
         line.SetPosition(line.positionCount - 1, transform.position);
+
     }
 
     void SpawnNewLine()
     {
-        if (currentLine != null)
-        {
-            transform.position = currentLine.GetComponent<LineRenderer>().GetPosition(currentLine.GetComponent<LineRenderer>().positionCount - 1);
-        }
+        // if (currentLine != null)
+        // {
+        //     transform.position = currentLine.GetComponent<LineRenderer>().GetPosition(currentLine.GetComponent<LineRenderer>().positionCount - 1);
+        // }
+        Vector3 target = transform.position;
 
+        if (currentLine != null && lineRenderer.positionCount > 5)
+        {
+            target = lineRenderer.GetPosition(lineRenderer.positionCount - 4);
+        }
+        
         currentLine = Instantiate(inkStates[currentPrefabIndex].linePrefab, transform.position, Quaternion.identity, lineContainer.transform);
         lineRenderer = currentLine.GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
-        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(0, target);
+        lineRenderer.widthMultiplier = Settings.width;
     }
 
     void ClearAllLines()
@@ -169,7 +177,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
             if (distance < GetEndCapThreshold())
             {
                 float scaleFactor = Mathf.Min(maxScale, endCap.transform.localScale.x + scaleSpeed * Time.deltaTime * lineMover.GetInkValue() / lineMover.GetMaxInk());
-                endCap.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                endCap.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor)*Settings.width;
                 return true;
             }
         }

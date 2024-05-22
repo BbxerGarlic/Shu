@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba568c6994ed3d940a0abe8caf03823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  inkValue: 300
-  maxInk: 500
+  speed: 10
+  inkValue: 200
+  maxInk: 250
   inkRechargeRate: 500
-  inkUsagePerMeter: 100
+  inkUsagePerMeter: 200
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7207068822854576533
 MonoBehaviour:
@@ -76,7 +76,7 @@ MonoBehaviour:
   extraPoints: 5
   timeStep: 0.01
   scaleSpeed: 1
-  maxScale: 0.3
+  maxScale: 0.4
   endCapThreshold: 0.01
 --- !u!114 &6971504718093712964
 MonoBehaviour:
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMover: {fileID: 2663330467709270132}
   circle: {fileID: 8982027104123961608, guid: 1ae2a496776c3134dadb734f5eee825f, type: 3}
+  lineContainer: {fileID: 0}
   minScale: 0.01
   maxScale: 0.5
 --- !u!58 &8543100566459595918

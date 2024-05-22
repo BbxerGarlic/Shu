@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TargetManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TargetManager : MonoBehaviour
     private TargetManager _targetManagerInstance;
     
     private int index = 0;
+    
+    public Button nextButton;
     
     private List<List<AreaBase>> targetsList = new List<List<AreaBase>>();
 
@@ -134,8 +137,11 @@ public class TargetManager : MonoBehaviour
 
         if (index == targetsList.Count - 1)
         {
-            SceneManager.LoadScene(nextSceneName);
-
+            nextButton.gameObject.SetActive(true);
+            nextButton.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene(nextSceneName);
+            });
         }
         else
         {

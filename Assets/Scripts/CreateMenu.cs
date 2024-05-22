@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CreateMenu : MonoBehaviour
@@ -9,6 +10,7 @@ public class CreateMenu : MonoBehaviour
     public Button feibaiBtn;
     public Button normalBtn;
     public Slider widthSlider;
+    public Toggle duanBiToggle;
     public GameObject point;
 
     private void Start()
@@ -16,17 +18,26 @@ public class CreateMenu : MonoBehaviour
         feibaiBtn.onClick.AddListener(OnClickFeibai);
         normalBtn.onClick.AddListener(OnClickNormal);
         widthSlider.onValueChanged.AddListener(OnValueChangedWidth);
+        duanBiToggle.onValueChanged.AddListener(OnValueChangedDuanBi);
+    }
+
+    private void OnValueChangedDuanBi(bool arg0)
+    {
+        Settings.isDuanBi = arg0;
+        
     }
 
     private void OnClickFeibai()
     {
         Settings.isFeiBai = true;
+        SceneManager.LoadScene("CreateLevel1");
     }
 
 
     private void OnClickNormal()
     {
         Settings.isFeiBai = false;
+        SceneManager.LoadScene("CreateLevel1");
     }
 
 

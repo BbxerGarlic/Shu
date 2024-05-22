@@ -57,8 +57,8 @@ Shader "Unlit/LineRendererWithCaps"
             
             fixed4 frag (v2f i) : SV_Target
             {
-                //float dist_x = min(i.uv.x,  _TextureAmount- i.uv.x) * _LineLength; // 计算到最近端点的距离
-                float dist_x =  (_TextureAmount*1.44- i.uv.x) * _TextureLength; // 计算到最近端点的距离
+                float dist_x = min(i.uv.x,  _TextureAmount*1.44- i.uv.x) * _TextureLength; // 计算到最近端点的距离
+                //float dist_x =  (_TextureAmount*1.44- i.uv.x) * _TextureLength; // 计算到最近端点的距离
                 float dist_y = min(i.uv.y, 1 - i.uv.y)*_LineWidth; // 计算到最近端点的距离
                 
                 float radius = 0.5;

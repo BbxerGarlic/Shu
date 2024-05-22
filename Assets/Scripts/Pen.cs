@@ -11,8 +11,6 @@ public class Pen : MonoBehaviour
     public float inkRechargeRate = 1.0f;
     public float inkUsagePerMeter = 1.0f;
 
-    public bool isFeiBai;
-    
     private Vector3 targetPosition;
     private bool started = false;
     private bool ended = false;
@@ -41,12 +39,13 @@ public class Pen : MonoBehaviour
                 
                 RaycastHit2D hit = Physics2D.Raycast(targetPosition, Vector2.zero,Mathf.Infinity,LayerMask.GetMask("StartArea"));
 
-                if (hit)
+                if (hit||Settings.isDuanBi&&line!=null)
                 {
                     started = true;
                     transform.position = targetPosition;
+                    lastPos = targetPosition;
                     line=drawer.StartDrawing(targetPosition);
-                    lastPos = transform.position;
+
                 }
                 
             }
@@ -83,13 +82,13 @@ public class Pen : MonoBehaviour
                 {
                     if (TargetManager.Instance.EndGame())
                     {
-                        Invoke(nameof(ContinueGame), 1.0f);
+                        Invoke(nameof(ContinueGame), 0.5f);
                         return;
                     }
                     
                 }
                 
-                Invoke(nameof(RestartGame), 1.0f);
+                Invoke(nameof(RestartGame), 0.2f);
 
 
             }   
@@ -109,9 +108,10 @@ public class Pen : MonoBehaviour
     void RestartGame()
     {
         
-        TargetManager.Instance.ResetGame();
+        if(!Settings.isDuanBi)TargetManager.Instance.ResetGame();
 
         if(!Settings.isDuanBi&&!Settings.isMiaoHong) Destroy(line);
+
         
         started = false;
         ended = false;
@@ -156,12 +156,14 @@ public class Pen : MonoBehaviour
             Settings.isFeiBai = false;
             GetComponent<LineDrawer>().enabled = false;
             GetComponent<PointDrawer>().enabled = true;
+            drawer = GetComponent<PointDrawer>();
         }
         else
         {
             Settings.isFeiBai = true;
             GetComponent<LineDrawer>().enabled = true;
             GetComponent<PointDrawer>().enabled = false;
+            drawer = GetComponent<LineDrawer>();
         }
     }
 }
