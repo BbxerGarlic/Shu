@@ -15,7 +15,7 @@ public class EndArea : AreaBase
 
     protected override void OnPenExit()
     {
-        GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f);
+        if(GetComponent<CircleCollider2D>().enabled == true)GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f);
     }
 
     public override void OnReset()
@@ -25,5 +25,22 @@ public class EndArea : AreaBase
         
         GetComponent<CircleCollider2D>().enabled = true;
 
+    }
+
+    public void OnEnd()
+    {
+        //TODO:游戏结束时调用
+        GetComponent<SpriteRenderer>().DOColor(Color.clear, 0.5f);
+        
+        GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    public void OnCannotEnd()
+    {
+        
+        //TODO:条件不满足时调用
+        GetComponent<SpriteRenderer>().DOColor(Color.red, 0.5f);
+        
+        GetComponent<CircleCollider2D>().enabled = true;
     }
 }

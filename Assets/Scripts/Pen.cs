@@ -41,6 +41,7 @@ public class Pen : MonoBehaviour
 
                 if (hit||Settings.isDuanBi&&line!=null)
                 {
+                    GetComponent<CircleCollider2D>().enabled = true;
                     started = true;
                     transform.position = targetPosition;
                     lastPos = targetPosition;
@@ -83,7 +84,13 @@ public class Pen : MonoBehaviour
                     if (TargetManager.Instance.EndGame())
                     {
                         Invoke(nameof(ContinueGame), 0.5f);
+                        
+                        hit.collider.GetComponent<EndArea>().OnEnd();
                         return;
+                    }
+                    else
+                    {
+                        hit.collider.GetComponent<EndArea>().OnCannotEnd();
                     }
                     
                 }
@@ -99,7 +106,7 @@ public class Pen : MonoBehaviour
 
     void ContinueGame()
     {
-        
+        line = null;
         started = false;
         ended = false;
 
@@ -107,10 +114,14 @@ public class Pen : MonoBehaviour
     
     void RestartGame()
     {
-        
-        if(!Settings.isDuanBi)TargetManager.Instance.ResetGame();
+        GetComponent<CircleCollider2D>().enabled = false;
 
-        if(!Settings.isDuanBi&&!Settings.isMiaoHong) Destroy(line);
+        if (!Settings.isDuanBi)
+        {
+            TargetManager.Instance.ResetGame();
+            Destroy(line);
+            line = null;
+        }
 
         
         started = false;

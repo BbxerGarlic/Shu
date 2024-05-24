@@ -6,6 +6,7 @@ Shader "Unlit/LineRendererWithCaps"
         _LineWidth("Line Width", Float) = 1.0
         _TextureLength("Texture Length", Float) = 1.0
         _TextureAmount("Texture Amount", Float) = 1.0
+        _Touch("Touch", Range(0.1,2)) = 1.0
     }
     SubShader
     {
@@ -38,6 +39,8 @@ Shader "Unlit/LineRendererWithCaps"
             float4 _MainTex_ST;
             float _LineWidth;
             float _TextureLength;
+
+            float  _Touch;
             
             float _TextureAmount;
             
@@ -61,13 +64,14 @@ Shader "Unlit/LineRendererWithCaps"
                 //float dist_x =  (_TextureAmount*1.44- i.uv.x) * _TextureLength; // 计算到最近端点的距离
                 float dist_y = min(i.uv.y, 1 - i.uv.y)*_LineWidth; // 计算到最近端点的距离
                 
+                //float radius = _Touch;
                 float radius = 0.5;
 
                 float alpha= 1;
                 
                 if(dist_x<radius)
                 {
-                    if((radius-dist_x)*(radius-dist_x)+(radius-dist_y)*(radius-dist_y)<radius*radius)
+                    if((radius-dist_x)*(radius-dist_x)+(radius-dist_y)*(radius-dist_y)*_Touch<radius*radius)
                     {
                         alpha=1;
                     }else

@@ -46,6 +46,7 @@ public class TargetManager : MonoBehaviour
         foreach (var target in targetsList[index])
         {
             target.gameObject.SetActive(true);
+            if(target is Target target1)targets.Add(target1);
             //Debug.Log(index);
         }
         
@@ -103,13 +104,14 @@ public class TargetManager : MonoBehaviour
     
     public void ResetGame()
     {
+
+        if (Settings.isDuanBi)
+        {
+            return;
+        }
         if (Settings.isMiaoHong)
         {
             ResetScore();
-        }
-        else if (Settings.isDuanBi)
-        {
-            return;
         }
         else
         {
