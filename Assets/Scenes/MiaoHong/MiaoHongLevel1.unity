@@ -1671,7 +1671,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: isDuanBi
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: isFeiBai

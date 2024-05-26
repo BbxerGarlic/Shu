@@ -49,7 +49,7 @@ public static class Settings
 
     public static bool isMiaoHong;
     
-    public static bool isDuanBi=true;
+    public static bool isDuanBi=false;
 
     public static float width=1f;
 }
