@@ -59,10 +59,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
             CheckInkStatusAndUpdate();
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ClearAllLines();
-        }
+
     }
 
     public GameObject StartDrawing(Vector3 startPosition)
@@ -71,6 +68,8 @@ public class LineDrawer : MonoBehaviour,IDrawer
         currentLine = null;
         
         //transform.position = startPosition;
+        
+        endCapList.Clear();
         
         lineContainer = new GameObject("Line Container");
         Debug.Log(123);
@@ -171,6 +170,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
 
     bool CheckEndCapProximityAndScale()
     {
+        
         foreach (GameObject endCap in endCapList)
         {
             float distance = Vector3.Distance(transform.position, endCap.transform.position);
