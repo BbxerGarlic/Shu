@@ -51,7 +51,7 @@ Material:
     - _Radius: 0.1
     - _TextureAmount: 8.83
     - _TextureLength: 1
-    - _Touch: 5
+    - _Touch: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

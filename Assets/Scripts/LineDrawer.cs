@@ -163,7 +163,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     void CreateEndCapAtPosition(Vector3 position)
     {
         if (endCapList.Count <= 4) position = transform.position;
-        GameObject newEndCap = Instantiate(endCapPrefab, position, Quaternion.identity);
+        GameObject newEndCap = Instantiate(endCapPrefab, position, Quaternion.identity,lineContainer.transform);
         float value = lineMover.GetInkValue() / lineMover.GetMaxInk();
         newEndCap.transform.localScale *= value;
         endCapList.Add(newEndCap);
