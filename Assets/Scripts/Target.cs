@@ -55,7 +55,7 @@ public class Target : AreaBase
         Vector2 penVelocity = pen.velocity;
 
         // 计算速度值
-        float inkValue = pen.inkValue;
+        float inkValue = pen.GetInkValue();
 
         // 检查速度是否在指定范围内
         if (inkValue >= inkMinMaxValue.x && inkValue <= inkMinMaxValue.y)

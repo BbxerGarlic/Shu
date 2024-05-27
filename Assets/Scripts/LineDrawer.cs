@@ -22,6 +22,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     public float maxScale = 2.0f; // 最大值
     public float endCapThreshold = 0.05f;
 
+    public float switchPenThreshold;
     private void Start()
     {
         
@@ -113,6 +114,9 @@ public class LineDrawer : MonoBehaviour,IDrawer
             {
                 if (i != currentPrefabIndex)
                 {
+                    if(i==currentPrefabIndex+1&&inkValue<inkStates[i].velocityThreshold+switchPenThreshold)break;
+                    
+                    
                     currentPrefabIndex = i;
                     lastLine = lineRenderer;
                     extraCount = extraPoints;
@@ -125,6 +129,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
 
     void AddPointToLine(LineRenderer line)
     {
+        if(line == null) return;
         UpdateMaterialProperties(line.material, line);
         line.positionCount++;
         line.SetPosition(line.positionCount - 1, transform.position);
@@ -177,7 +182,8 @@ public class LineDrawer : MonoBehaviour,IDrawer
             float distance = Vector3.Distance(transform.position, endCap.transform.position);
             if (distance < GetEndCapThreshold())
             {
-                float scaleFactor = Mathf.Min(maxScale, endCap.transform.localScale.x + scaleSpeed * Time.deltaTime * lineMover.GetInkRate());
+                float scaleFactor = Mathf.Min(maxScale*Settings.width, endCap.transform.localScale.x/Settings.width + scaleSpeed * Time.deltaTime);
+                Debug.Log(scaleSpeed * Time.deltaTime * lineMover.GetInkRate());
                 endCap.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor)*Settings.width;
                 return true;
             }

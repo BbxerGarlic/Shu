@@ -5543,11 +5543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.x
-      value: 150
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.y
-      value: 250
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6393,11 +6393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.x
-      value: 150
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.y
-      value: 250
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6903,6 +6903,14 @@ PrefabInstance:
       value: Pen
       objectReference: {fileID: 0}
     - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
+      propertyPath: maxScale
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
+      propertyPath: scaleSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: inkStates.Array.data[0].linePrefab
       value: 
       objectReference: {fileID: 7588393062540873080, guid: 466066eaed68ba4438295125a6ac0d81, type: 3}
@@ -6981,11 +6989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.x
-      value: 150
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6870481376959592003, guid: 6b0ba235b34c6f94c9d11d47f55c0bf5, type: 3}
       propertyPath: inkMinMaxValue.y
-      value: 250
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
