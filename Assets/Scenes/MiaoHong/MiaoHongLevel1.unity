@@ -6838,26 +6838,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: maxInk
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkRechargeRate
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkUsagePerMeter
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3308133397495790582, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.54
@@ -6901,34 +6881,6 @@ PrefabInstance:
     - target: {fileID: 5983461880897035309, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: m_Name
       value: Pen
-      objectReference: {fileID: 0}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: maxScale
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: scaleSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkStates.Array.data[0].linePrefab
-      value: 
-      objectReference: {fileID: 7588393062540873080, guid: 466066eaed68ba4438295125a6ac0d81, type: 3}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkStates.Array.data[1].linePrefab
-      value: 
-      objectReference: {fileID: 5528699258867867320, guid: a9986ec1dc412a44c8eb694d36a9f9a7, type: 3}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkStates.Array.data[1].inkThreshold
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkStates.Array.data[0].velocityThreshold
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
-      propertyPath: inkStates.Array.data[1].velocityThreshold
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7014,7 +6966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: isFeiBai
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: brushWidth

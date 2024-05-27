@@ -162,7 +162,7 @@ public class Pen : MonoBehaviour
     {
         //return Mathf.Max(0.00001f,inkValue/maxInk);
 
-        return Mathf.Clamp(Mathf.Abs(velocity.magnitude)/speed,0.001f,1);
+        return Mathf.Clamp(Mathf.Abs(velocity.magnitude)/speed,0.001f,99f);
     }
     public float GetMaxInk()
     {

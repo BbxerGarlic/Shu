@@ -50,10 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   inkValue: 200
-  maxInk: 250
-  inkRechargeRate: 500
-  inkUsagePerMeter: 200
   velocity: {x: 0, y: 0, z: 0}
+  currentVelocity: 0
 --- !u!114 &7207068822854576533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,16 +66,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMover: {fileID: 2663330467709270132}
   inkStates:
-  - linePrefab: {fileID: 5528699258867867320, guid: a9986ec1dc412a44c8eb694d36a9f9a7, type: 3}
-    inkThreshold: 0
   - linePrefab: {fileID: 7588393062540873080, guid: 466066eaed68ba4438295125a6ac0d81, type: 3}
-    inkThreshold: 200
+    velocityThreshold: 0
+  - linePrefab: {fileID: 5528699258867867320, guid: a9986ec1dc412a44c8eb694d36a9f9a7, type: 3}
+    velocityThreshold: 5
   endCapPrefab: {fileID: 8982027104123961608, guid: 1ae2a496776c3134dadb734f5eee825f, type: 3}
   extraPoints: 5
   timeStep: 0.01
   scaleSpeed: 1
   maxScale: 0.4
   endCapThreshold: 0.01
+  switchPenThreshold: 0
 --- !u!114 &6971504718093712964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +92,8 @@ MonoBehaviour:
   lineMover: {fileID: 2663330467709270132}
   circle: {fileID: 8982027104123961608, guid: 1ae2a496776c3134dadb734f5eee825f, type: 3}
   lineContainer: {fileID: 0}
-  minScale: 0.01
-  maxScale: 0.5
+  minScale: 0.0001
+  maxScale: 0.3
 --- !u!58 &8543100566459595918
 CircleCollider2D:
   m_ObjectHideFlags: 0
