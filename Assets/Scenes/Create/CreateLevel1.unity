@@ -1209,6 +1209,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
+      propertyPath: inkRechargeRate
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 3308133397495790582, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.54

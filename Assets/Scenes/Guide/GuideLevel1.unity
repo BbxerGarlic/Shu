@@ -1533,7 +1533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: inkRechargeRate
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2663330467709270132, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
       propertyPath: inkUsagePerMeter
