@@ -6882,6 +6882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pen
       objectReference: {fileID: 0}
+    - target: {fileID: 7207068822854576533, guid: 357fa2c2d344b25418daae2b00386ba6, type: 3}
+      propertyPath: inkStates.Array.data[1].velocityThreshold
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6966,7 +6970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: isFeiBai
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 738097416193475311, guid: e45e6a4b461f4e24cbfe133d4ce2dbf5, type: 3}
       propertyPath: brushWidth
