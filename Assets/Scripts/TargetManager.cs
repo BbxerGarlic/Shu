@@ -165,6 +165,7 @@ public class TargetManager : MonoBehaviour
             foreach (var target in targetsList[index])
             {
                 target.gameObject.SetActive(true);
+                if(target is Target target1)targets.Add(target1);
             }
         }
     }

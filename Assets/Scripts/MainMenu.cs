@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
         miaoHongButton.onClick.AddListener(OnMiaoHongButtonClicked);
         createButton.onClick.AddListener(OnCreateButtonClicked);
         guideButton.onClick.AddListener(OnGuideButtonClicked);
-        
+
     }
 
     public void OnMiaoHongButtonClicked()

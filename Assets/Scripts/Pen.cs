@@ -7,10 +7,12 @@ public class Pen : MonoBehaviour
 {
     public float speed = 0.1f;
     public float inkValue = 100.0f;
-    public float maxInk = 100.0f;
-    public float inkRechargeRate = 1.0f;
-    public float inkUsagePerMeter = 1.0f;
+    private float maxInk = 100.0f;
+    private float inkRechargeRate = 1.0f;
+    private float inkUsagePerMeter = 1.0f;
 
+    
+    
     private Vector3 targetPosition;
     private bool started = false;
     private bool ended = false;
@@ -19,6 +21,8 @@ public class Pen : MonoBehaviour
 
     private Vector3 lastPos;
     public Vector3 velocity;
+    
+    public float currentVelocity = 0;
 
     private GameObject line;
 
@@ -52,6 +56,8 @@ public class Pen : MonoBehaviour
             }
 
         }
+
+        currentVelocity = velocity.magnitude;
     }
 
     void Update()
@@ -149,11 +155,13 @@ public class Pen : MonoBehaviour
 
     public float GetInkValue()
     {
-        return inkValue;
+        //return inkValue;
+        return velocity.magnitude;
     }
     public float GetInkRate()
     {
-        return Mathf.Max(0.00001f,inkValue/maxInk);
+        //return Mathf.Max(0.00001f,inkValue/maxInk);
+        return velocity.magnitude;
     }
     public float GetMaxInk()
     {

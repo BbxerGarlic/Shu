@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LineDrawer : MonoBehaviour,IDrawer
 {
@@ -108,7 +109,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
         float inkValue = lineMover.GetInkValue();
         for (int i = inkStates.Length - 1; i >= 0; i--)
         {
-            if (inkValue > inkStates[i].inkThreshold)
+            if (inkValue > inkStates[i].velocityThreshold)
             {
                 if (i != currentPrefabIndex)
                 {
@@ -163,7 +164,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     {
         if (endCapList.Count <= 4) position = transform.position;
         GameObject newEndCap = Instantiate(endCapPrefab, position, Quaternion.identity,lineContainer.transform);
-        float value = lineMover.GetInkValue() / lineMover.GetMaxInk();
+        float value = lineMover.GetInkRate();
         newEndCap.transform.localScale *= value;
         endCapList.Add(newEndCap);
     }
@@ -176,7 +177,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
             float distance = Vector3.Distance(transform.position, endCap.transform.position);
             if (distance < GetEndCapThreshold())
             {
-                float scaleFactor = Mathf.Min(maxScale, endCap.transform.localScale.x + scaleSpeed * Time.deltaTime * lineMover.GetInkValue() / lineMover.GetMaxInk());
+                float scaleFactor = Mathf.Min(maxScale, endCap.transform.localScale.x + scaleSpeed * Time.deltaTime * lineMover.GetInkRate());
                 endCap.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor)*Settings.width;
                 return true;
             }
@@ -215,11 +216,11 @@ public class LineDrawer : MonoBehaviour,IDrawer
     public class InkState
     {
         public GameObject linePrefab;
-        public float inkThreshold;
+        [FormerlySerializedAs("inkThreshold")] public float velocityThreshold;
 
         public InkState(float threshold, GameObject prefab)
         {
-            inkThreshold = threshold;
+            velocityThreshold = threshold;
             linePrefab = prefab;
         }
     }
