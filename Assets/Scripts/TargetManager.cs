@@ -139,11 +139,16 @@ public class TargetManager : MonoBehaviour
 
         if (index == targetsList.Count - 1)
         {
+
             nextButton.gameObject.SetActive(true);
             nextButton.onClick.AddListener(() =>
             {
                 SceneManager.LoadScene(nextSceneName);
             });
+            foreach (var target in targetsList[index])
+            {
+                target.gameObject.SetActive(false);
+            }
         }
         else
         {

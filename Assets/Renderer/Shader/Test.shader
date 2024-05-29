@@ -91,14 +91,15 @@ Shader "Unlit/LineRendererWithCaps"
                     col.a = alpha; // 调整透明度形成半圆效果
                 }
 
-                if(col.b>0.37)
+                if(col.a>0.2)
                 {
-                    col = fixed4(0,0,0,0);
+                    col = fixed4(0,0,0,1);
                 }
                 else
                 {
-                    col=fixed4(0,0,0,col.a);
+                    col=fixed4(0,0,0,0);
                 }
+                
                 
                 return col;
             }

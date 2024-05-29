@@ -144,10 +144,16 @@ public class LineDrawer : MonoBehaviour,IDrawer
         // }
         Vector3 target = transform.position;
 
-        if (currentLine != null && lineRenderer.positionCount > 5)
+        if (currentLine != null )
         {
-            target = lineRenderer.GetPosition(lineRenderer.positionCount - 4);
+            if ( lineRenderer.positionCount > 3) target = lineRenderer.GetPosition(lineRenderer.positionCount - 2);
+            
+            else
+            {
+                target = lineRenderer.GetPosition(0);
+            }
         }
+        
         
         currentLine = Instantiate(inkStates[currentPrefabIndex].linePrefab, transform.position, Quaternion.identity, lineContainer.transform);
         lineRenderer = currentLine.GetComponent<LineRenderer>();
@@ -200,7 +206,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
 
         float textureRepeatCount = totalLength / material.mainTexture.width;
         material.SetFloat("_TextureAmount", textureRepeatCount);
-        material.SetFloat("_TextureLength", totalLength / textureRepeatCount);
+        material.SetFloat("_TextureLength", totalLength / Mathf.Max(textureRepeatCount,0.001f));
     }
 
     private float CalculateLineLength(LineRenderer lineRenderer)

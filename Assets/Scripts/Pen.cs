@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Pen : MonoBehaviour
 {
     public float speed = 0.1f;
-    public float inkValue = 100.0f;
+    private float inkValue = 100.0f;
     private float maxInk = 100.0f;
     private float inkRechargeRate = 1.0f;
     private float inkUsagePerMeter = 1.0f;
@@ -45,9 +45,9 @@ public class Pen : MonoBehaviour
 
                 if (hit||Settings.isDuanBi&&line!=null)
                 {
-                    GetComponent<CircleCollider2D>().enabled = true;
                     started = true;
                     transform.position = targetPosition;
+                    GetComponent<CircleCollider2D>().enabled = true;
                     lastPos = targetPosition;
                     line=drawer.StartDrawing(targetPosition);
 
@@ -115,6 +115,7 @@ public class Pen : MonoBehaviour
         line = null;
         started = false;
         ended = false;
+        GetComponent<CircleCollider2D>().enabled = false;
 
     }
     

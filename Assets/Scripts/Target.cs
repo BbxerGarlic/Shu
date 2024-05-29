@@ -32,7 +32,7 @@ public class Target : AreaBase
         
         
         //TODO：在这里实现效果
-        GetComponent<SpriteRenderer>().DOColor(UnityEngine.Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f), 0.5f);
+        //GetComponent<SpriteRenderer>().DOColor(UnityEngine.Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f), 0.5f);
         transform.DOScale(Vector3.one * 0.4f, 0.5f);
 
 
@@ -42,7 +42,7 @@ public class Target : AreaBase
     public override void OnReset()
     {
         //TODO: 这里可以实现重置效果
-        GetComponent<SpriteRenderer>().DOColor(Color.red, 0.5f);
+        //GetComponent<SpriteRenderer>().DOColor(Color.red, 0.5f);
         transform.DOScale(Vector3.one * 0.2f, 0.5f);
         
         GetComponent<CircleCollider2D>().enabled = true;

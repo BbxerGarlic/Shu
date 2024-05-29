@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6870481376959592003}
   - component: {fileID: -7004572070009906789}
   m_Layer: 0
-  m_Name: Target
+  m_Name: AllTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a1a47d4271a6ea146bd9fc45f16d6603, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,9 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4121e0acf4d8c40aab2b1747ba7a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityDir: {x: 1, y: 1}
   angle: 360
-  inkMinMaxValue: {x: 0, y: 500}
+  inkMinMaxValue: {x: 0, y: 50}
 --- !u!50 &-7004572070009906789
 Rigidbody2D:
   serializedVersion: 4
