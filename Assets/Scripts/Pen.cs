@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class Pen : MonoBehaviour
 {
     public float speed = 0.1f;
-    private float inkValue = 100.0f;
-    private float maxInk = 100.0f;
-    private float inkRechargeRate = 1.0f;
-    private float inkUsagePerMeter = 1.0f;
+    [SerializeField]private float inkValue = 100.0f;
+    [SerializeField]private float maxInk = 100.0f;
+    [SerializeField]private float inkRechargeRate = 1.0f;
+    [SerializeField]private float inkUsagePerMeter = 1.0f;
 
     
     
@@ -43,7 +43,7 @@ public class Pen : MonoBehaviour
                 
                 RaycastHit2D hit = Physics2D.Raycast(targetPosition, Vector2.zero,Mathf.Infinity,LayerMask.GetMask("StartArea"));
 
-                if (hit||Settings.isDuanBi&&line!=null)
+                if (hit||Settings.isDuanBi&&line!=null||!Settings.isMiaoHong)
                 {
                     started = true;
                     transform.position = targetPosition;
@@ -154,12 +154,17 @@ public class Pen : MonoBehaviour
         return started && !ended;
     }
 
-    public float GetInkValue()
+    public float GetInkRate()
+    {
+        return Mathf.Max(0.00001f,inkValue/maxInk);
+    }
+    
+    public float GetSpeed()
     {
         //return inkValue;
         return Mathf.Abs(velocity.magnitude);
     }
-    public float GetInkRate()
+    public float GetSpeedRate()
     {
         //return Mathf.Max(0.00001f,inkValue/maxInk);
 

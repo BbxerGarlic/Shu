@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class TargetManager : MonoBehaviour
 {
@@ -26,8 +27,20 @@ public class TargetManager : MonoBehaviour
 
     private void Start()
     {
+
+        if (!Settings.isMiaoHong)
+        {
+            nextButton.gameObject.SetActive(true);
+            nextButton.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene(nextSceneName);
+            });
+            return;
+        }
         
         List<GameObject> roundObjects = FindAllRoundObjects();
+        
+        
         foreach (GameObject obj in roundObjects)
         {
             int number = GetNumberFromName(obj.name);
@@ -104,7 +117,8 @@ public class TargetManager : MonoBehaviour
     
     public void ResetGame()
     {
-
+        var ran=Random.Range(1, 3);
+        AudioManager.Instance.PlayAudio($"错误{ran}");
         if (Settings.isDuanBi)
         {
             return;
@@ -125,6 +139,8 @@ public class TargetManager : MonoBehaviour
     {
         if (targets.Count == 0)
         {
+            var ran=Random.Range(1, 3);
+            AudioManager.Instance.PlayAudio($"扫{ran}");
             Invoke(nameof(NextLevel), 1f);
             return true;
         }

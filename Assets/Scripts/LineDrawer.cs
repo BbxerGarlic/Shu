@@ -84,7 +84,17 @@ public class LineDrawer : MonoBehaviour,IDrawer
         if (lineMover.IsDrawing())
         {
             CreateEndCapAtPosition(transform.position);
+
         }
+        lineRenderer = null;
+
+        lastLine = null;
+        
+        currentLine = null;
+        
+        //transform.position = startPosition;
+        
+        endCapList.Clear();
     }
 
     public void UpdateDrawing(Vector3 position)
@@ -107,7 +117,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     
     void CheckInkStatusAndUpdate()
     {
-        float inkValue = lineMover.GetInkValue();
+        float inkValue = lineMover.GetInkRate();
         for (int i = inkStates.Length - 1; i >= 0; i--)
         {
             if (inkValue > inkStates[i].velocityThreshold)
@@ -175,7 +185,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
     {
         if (endCapList.Count <= 4) position = transform.position;
         GameObject newEndCap = Instantiate(endCapPrefab, position, Quaternion.identity,lineContainer.transform);
-        float value = lineMover.GetInkRate();
+        float value = lineMover.GetSpeedRate();
         newEndCap.transform.localScale *= value;
         endCapList.Add(newEndCap);
     }
@@ -189,7 +199,7 @@ public class LineDrawer : MonoBehaviour,IDrawer
             if (distance < GetEndCapThreshold())
             {
                 float scaleFactor = Mathf.Min(maxScale*Settings.width, endCap.transform.localScale.x/Settings.width + scaleSpeed * Time.deltaTime);
-                Debug.Log(scaleSpeed * Time.deltaTime * lineMover.GetInkRate());
+                Debug.Log(scaleSpeed * Time.deltaTime * lineMover.GetSpeedRate());
                 endCap.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor)*Settings.width;
                 return true;
             }

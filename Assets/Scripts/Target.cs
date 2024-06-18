@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Target : AreaBase
 {
@@ -28,12 +29,16 @@ public class Target : AreaBase
         TargetManager.Instance.RemoveTarget(this);
 
         GetComponent<CircleCollider2D>().enabled = false;
-        
-        
+
+
+        var random = Random.Range(1, 5);
+        // 然后播放音效
+        AudioManager.Instance.PlayAudio($"{random}");
         
         //TODO：在这里实现效果
         //GetComponent<SpriteRenderer>().DOColor(UnityEngine.Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f), 0.5f);
         transform.DOScale(Vector3.one * 0.4f, 0.5f);
+        GetComponent<SpriteRenderer>().DOColor(Color.clear, 0.5f);
 
 
 
@@ -44,6 +49,7 @@ public class Target : AreaBase
         //TODO: 这里可以实现重置效果
         //GetComponent<SpriteRenderer>().DOColor(Color.red, 0.5f);
         transform.DOScale(Vector3.one * 0.2f, 0.5f);
+        GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
         
         GetComponent<CircleCollider2D>().enabled = true;
     }
@@ -55,7 +61,7 @@ public class Target : AreaBase
         Vector2 penVelocity = pen.velocity;
 
         // 计算速度值
-        float inkValue = pen.GetInkValue();
+        float inkValue = pen.GetSpeed();
 
         // 检查速度是否在指定范围内
         if (inkValue >= inkMinMaxValue.x && inkValue <= inkMinMaxValue.y)

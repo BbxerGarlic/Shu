@@ -898,7 +898,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1360137498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,10 +1316,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 480821939}
   m_HandleRect: {fileID: 2136027017}
   m_Direction: 0
-  m_MinValue: 0.5
-  m_MaxValue: 1.5
+  m_MinValue: 1.5
+  m_MaxValue: 2.5
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 1.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

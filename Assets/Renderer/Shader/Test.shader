@@ -93,7 +93,12 @@ Shader "Unlit/LineRendererWithCaps"
 
                 if(col.a>0.2)
                 {
-                    col = fixed4(0,0,0,1);
+                    if(col.b<0.37){
+                        col = fixed4(0,0,0,1);}
+                    else
+                    {
+                        col=fixed4(0,0,0,0);
+                    }
                 }
                 else
                 {

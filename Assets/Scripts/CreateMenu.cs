@@ -19,6 +19,7 @@ public class CreateMenu : MonoBehaviour
         normalBtn.onClick.AddListener(OnClickNormal);
         widthSlider.onValueChanged.AddListener(OnValueChangedWidth);
         duanBiToggle.onValueChanged.AddListener(OnValueChangedDuanBi);
+        duanBiToggle.isOn = Settings.isDuanBi;
     }
 
     private void OnValueChangedDuanBi(bool arg0)

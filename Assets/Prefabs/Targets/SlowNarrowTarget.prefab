@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 330adc7ff9f894f4b8426f61b3477841, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 391b38a1f14ed8743bb99dec95b1b1fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4121e0acf4d8c40aab2b1747ba7a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 45
+  angle: 90
   inkMinMaxValue: {x: 0, y: 7}
 --- !u!50 &-7004572070009906789
 Rigidbody2D:

@@ -29,4 +29,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiaoHong/MiaoHongLevel4.unity
     guid: a7c621da64669ad458ba7c9db8b8b36f
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel2.unity
+    guid: f2f5058c202b05e489b6eb7941ddc288
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel3.unity
+    guid: 040d85cf526b5294284783b9ce9d1aa5
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel4.unity
+    guid: 7e664573ffa68c5488f500a2a6e1c384
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel5.unity
+    guid: 7793a7aa99e2a874394122bb9e35d10f
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel6.unity
+    guid: af06dbfb6cd2d9b488b8340b35bf2124
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel7.unity
+    guid: 5f211c9e35a26db4e98ffd98bafbe763
+  - enabled: 1
+    path: Assets/Scenes/Guide/GuideLevel8.unity
+    guid: b0b0a5a9514067c42ab12d666ef54188
   m_configObjects: {}

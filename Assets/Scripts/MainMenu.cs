@@ -49,9 +49,9 @@ public static class Settings
 
     public static bool isMiaoHong;
     
-    public static bool isDuanBi=false;
+    public static bool isDuanBi=true;
 
-    public static float width=1f;
+    public static float width=2f;
 }
 
 public class ListExpander

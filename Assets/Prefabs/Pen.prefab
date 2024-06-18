@@ -48,7 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba568c6994ed3d940a0abe8caf03823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
+  inkValue: 500
+  maxInk: 500
+  inkRechargeRate: 800
+  inkUsagePerMeter: 200
   velocity: {x: 0, y: 0, z: 0}
   currentVelocity: 0
 --- !u!114 &7207068822854576533
@@ -65,21 +69,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMover: {fileID: 2663330467709270132}
   inkStates:
-  - linePrefab: {fileID: 5528699258867867320, guid: 29824170e18d8544aac2aca6f5745b7e, type: 3}
+  - linePrefab: {fileID: 5528699258867867320, guid: 495bfae191c5ff0468c9e74c67e64988, type: 3}
     velocityThreshold: 0
   - linePrefab: {fileID: 5528699258867867320, guid: e28eaab8f4eeb5d4a9f22ee471525bbb, type: 3}
-    velocityThreshold: 3
-  - linePrefab: {fileID: 5528699258867867320, guid: 558562bff22852748b776f0a7a2c102e, type: 3}
-    velocityThreshold: 6
-  - linePrefab: {fileID: 5528699258867867320, guid: 495bfae191c5ff0468c9e74c67e64988, type: 3}
-    velocityThreshold: 12
+    velocityThreshold: 0.3
+  - linePrefab: {fileID: 5528699258867867320, guid: e1b4512507fe8e148ad91715b282762b, type: 3}
+    velocityThreshold: 0.5
+  - linePrefab: {fileID: 5528699258867867320, guid: 29824170e18d8544aac2aca6f5745b7e, type: 3}
+    velocityThreshold: 0.8
   endCapPrefab: {fileID: 8982027104123961608, guid: 1ae2a496776c3134dadb734f5eee825f, type: 3}
   extraPoints: 5
   timeStep: 0.01
   scaleSpeed: 1
   maxScale: 0.4
   endCapThreshold: 0.01
-  switchPenThreshold: 1
+  switchPenThreshold: 0
 --- !u!114 &6971504718093712964
 MonoBehaviour:
   m_ObjectHideFlags: 0
